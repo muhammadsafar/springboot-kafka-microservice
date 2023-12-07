@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "ffcbeca0-19f7-41ad-b7a2-09d3b4d0184a",
+		"name": "kafka-microservice-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5354652",
+		"_collection_link": "https://restless-shadow-8992-1.postman.co/workspace/Team-Workspace~28368543-8c37-4bd1-8e0b-b00c05be47ae/collection/5354652-ffcbeca0-19f7-41ad-b7a2-09d3b4d0184a?action=share&source=collection_link&creator=5354652"
+	},
+	"item": [
+		{
+			"name": "kafka-orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderName\":\"{{$randomProduct}}\",\r\n    \"qty\": 2,\r\n    \"price\": \"{{$randomPrice}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

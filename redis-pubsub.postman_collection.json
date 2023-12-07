@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "ce97e474-45d2-4fe1-ab71-181e1c8a43f6",
+		"name": "redis-pubsub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5354652",
+		"_collection_link": "https://restless-shadow-8992-1.postman.co/workspace/Team-Workspace~28368543-8c37-4bd1-8e0b-b00c05be47ae/collection/5354652-ce97e474-45d2-4fe1-ab71-181e1c8a43f6?action=share&source=collection_link&creator=5354652"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/redis/publish",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": \"test publish {{$randomDateFuture}}\",\r\n    \"author\": \"muhammad baharuddin {{$randomUserName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/redis/publish",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"redis",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/redis/subscribe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/redis/subscribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"redis",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
