@@ -5,10 +5,12 @@ import com.msbahrddin.basedomains.dto.OrderEvent;
 import com.msbahrddin.orderservice.kafka.OrderProducer;
 import com.msbahrddin.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
@@ -27,17 +29,26 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public ResponseEntity<String> placeOrder(@RequestBody Order order) {
-        order.setOrderId(UUID.randomUUID().toString());
+    public ResponseEntity<OrderEvent> placeOrder(@RequestBody Order order) {
 
         OrderEvent orderEvent = new OrderEvent();
         orderEvent.setStatus("PENDING");
         orderEvent.setMessage("order status is in pending state");
         orderEvent.setOrder(order);
 
+        //save into db
+        orderService.createOrder(order);
+
+        //send info to broker
         orderProducer.sendMessage(orderEvent);
 
-        return ResponseEntity.ok("Order placed successfully...");
+        return new ResponseEntity<>(orderEvent, HttpStatus.CREATED);
 
+    }
+
+    @GetMapping("/orders/{orderId}")
+    public ResponseEntity<Order> getById(@PathVariable Long orderId){
+        Order get =  orderService.getOrderById(orderId);
+        return ResponseEntity.ok(get);
     }
 }
