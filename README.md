@@ -6,6 +6,8 @@ springboot microservice, kafka include redis, mongoDB collection
 2. base-domain as parent model
 3. email and stock service as subscriber
 4. order as producer
-5. sprig boot , mongo db model collection,
+5. spring boot , mongo db simple model collection,
 7. using kafka
 8. redis in order-service
+9. using java 17, springboot 3xx 
+10. application test 
