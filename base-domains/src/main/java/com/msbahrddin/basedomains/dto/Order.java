@@ -15,7 +15,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Order {
 
     @Id
-    private Long orderId;
+    private String id;
+
     private String orderName;
     private int qty;
     private double price;

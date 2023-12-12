@@ -25,9 +25,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrderById(Long orderId) {
+    public Order getOrderById(String orderId) {
         Optional<Order> opt = orderRepository.findById(orderId);
-        return opt.orElseGet(() -> Order.builder().orderId(null).orderName("NOT_FOUND").qty(0).price(0).build());
+        return opt.orElseGet(() -> Order.builder().id(null).orderName("NOT_FOUND").qty(0).price(0).build());
     }
 
     @Override
@@ -36,13 +36,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrder(Long orderId, Order order) {
-        order.setOrderId(orderId);
+    public Order updateOrder(String orderId, Order order) {
+        order.setId(orderId);
         return orderRepository.save(order);
     }
 
     @Override
-    public void deleteOrder(Long orderId) {
+    public void deleteOrder(String orderId) {
         orderRepository.deleteById(orderId);
     }
 
@@ -52,3 +52,4 @@ public class OrderServiceImpl implements OrderService {
     }
 
 }
+                         

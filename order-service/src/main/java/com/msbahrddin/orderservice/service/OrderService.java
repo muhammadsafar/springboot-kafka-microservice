@@ -10,13 +10,13 @@ public interface OrderService {
 
     List<Order> getAllOrders();
 
-    Order getOrderById(Long orderId);
+    Order getOrderById(String orderId);
 
     Order createOrder(Order order);
 
-    Order updateOrder(Long orderId, Order order);
+    Order updateOrder(String orderId, Order order);
 
-    void deleteOrder(Long orderId);
+    void deleteOrder(String orderId);
 
     List<Order> findOrdersByPriceGreaterThan(double price);
 }

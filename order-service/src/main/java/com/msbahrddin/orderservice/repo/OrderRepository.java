@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface OrderRepository extends MongoRepository<Order, Long> {
+public interface OrderRepository extends MongoRepository<Order, String> {
 
     @Query("{ 'price' : { $gt: ?0 } }")
     List<Order> findOrdersByPriceGreaterThan(double price);
