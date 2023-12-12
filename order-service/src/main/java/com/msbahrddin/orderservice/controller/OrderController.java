@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/kafka")
+@RequestMapping("/api/v1/kafka/orders")
 public class OrderController {
 
     private OrderProducer orderProducer;
@@ -28,7 +28,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/orders")
+    @PostMapping
     public ResponseEntity<OrderEvent> placeOrder(@RequestBody Order order) {
 
         OrderEvent orderEvent = new OrderEvent();
@@ -46,9 +46,15 @@ public class OrderController {
 
     }
 
-    @GetMapping("/orders/{orderId}")
-    public ResponseEntity<Order> getById(@PathVariable String orderId){
-        Order get =  orderService.getOrderById(orderId);
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getById(@PathVariable String id){
+        Order get =  orderService.getOrderById(id);
         return ResponseEntity.ok(get);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Order>> getAllOrders(){
+        List<Order> data =  orderService.getAllOrders();
+        return ResponseEntity.ok(data);
     }
 }

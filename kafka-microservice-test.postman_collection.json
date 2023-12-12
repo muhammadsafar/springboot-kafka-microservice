@@ -37,6 +37,51 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/orders/6577c402f3832247b1175881",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"orders",
+						"6577c402f3832247b1175881"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"orders"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
